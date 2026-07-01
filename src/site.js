@@ -40,7 +40,7 @@ const footerHTML = `
   </div>
   <div class="container footer-base">
     <span>© 2026 Flight Path Innovation. All rights reserved.</span>
-    <span class="footer-legal"><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · Accra International Airport · Ghana · Reg. No. ——</span>
+    <span class="footer-legal"><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/credits.html">Credits</a> · Accra International Airport · Ghana · Reg. No. ——</span>
   </div>`;
 
 export function mountChrome(active) {

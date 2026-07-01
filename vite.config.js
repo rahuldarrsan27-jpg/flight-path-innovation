@@ -20,6 +20,7 @@ export default defineConfig({
         capabilityCheck: resolve(root, 'capability-check.html'),
         privacy: resolve(root, 'privacy.html'),
         terms: resolve(root, 'terms.html'),
+        credits: resolve(root, 'credits.html'),
       },
     },
   },
