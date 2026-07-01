@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh --version)",
+      "Bash(gh auth *)",
+      "Bash(git -C /Users/rahul/Claus/flight-path-innovation remote -v)",
+      "Bash(brew --version)",
+      "Bash(git push *)"
+    ]
+  }
+}

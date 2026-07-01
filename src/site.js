@@ -12,7 +12,7 @@ const navHTML = (active) => `
       <a href="/#about">About</a>
     </nav>
     <div class="nav-actions">
-      <a href="tel:+233000000000" class="btn btn-aog"><span class="pulse"></span>24/7 AOG</a>
+      <a href="/aog.html" class="btn btn-aog"><span class="pulse"></span>24/7 AOG</a>
       <a href="/#contact" class="btn btn-primary">Request a Quote</a>
     </div>
     <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -35,12 +35,12 @@ const footerHTML = `
       <a href="/network.html">Network &amp; Coverage</a><a href="/#about">About</a><a href="/sustainability.html">Sustainability</a><a href="/careers.html">Careers</a>
     </div>
     <div class="f-col"><h4>Contact</h4>
-      <a href="tel:+233000000000">24/7 AOG Desk</a><a href="mailto:sales@flightpathinnovation.com">Commercial</a><a href="/#contact">Request a Quote</a>
+      <a href="/aog.html">24/7 AOG Support</a><a href="/capability-check.html">Capability Check</a><a href="mailto:sales@flightpathinnovation.com">Commercial</a><a href="/#contact">Request a Quote</a>
     </div>
   </div>
   <div class="container footer-base">
     <span>© 2026 Flight Path Innovation. All rights reserved.</span>
-    <span>Accra International Airport · Ghana · Reg. No. ——</span>
+    <span class="footer-legal"><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · Accra International Airport · Ghana · Reg. No. ——</span>
   </div>`;
 
 export function mountChrome(active) {

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Capability &amp; Turnaround Check — GCAA Part-145 | Flight Path Innovation</title>
+    <meta name="description" content="Check instantly whether Flight Path Innovation is GCAA Part-145 rated for your aircraft type and maintenance requirement, with an indicative turnaround time." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body data-nav="">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <main id="main">
+      <nav class="breadcrumb container" aria-label="Breadcrumb"><a href="/">Home</a> / <span>Capability Check</span></nav>
+
+      <section class="section">
+        <div class="container">
+          <header class="sec-head center" data-reveal>
+            <p class="eyebrow">INSTANT ELIGIBILITY</p>
+            <h2>Capability &amp; turnaround check</h2>
+            <p class="sec-lede">Tell us your aircraft and requirement — see instantly whether we're rated for it and an indicative turnaround, then request a slot.</p>
+          </header>
+
+          <div class="checker" data-reveal>
+            <form id="checker-form" class="checker-form" novalidate>
+              <label class="field"><span>Aircraft type</span>
+                <select name="type" required>
+                  <option value="">Select…</option>
+                  <option>Airbus A319 / A320 / A321 (ceo / neo)</option>
+                  <option>Boeing 737 NG</option>
+                  <option>Boeing 737 MAX</option>
+                  <option>Embraer E-Jet (E170–E195)</option>
+                  <option>Embraer E-Jet E2</option>
+                  <option>ATR 42 / 72-600</option>
+                </select>
+              </label>
+              <label class="field"><span>Service required</span>
+                <select name="service" required>
+                  <option value="">Select…</option>
+                  <option>Hangar Storage</option>
+                  <option>Line Maintenance</option>
+                  <option>Base Maintenance</option>
+                  <option>Component MRO</option>
+                </select>
+              </label>
+              <label class="field" id="check-level-wrap" hidden><span>Check level</span>
+                <select name="level">
+                  <option>A-Check</option>
+                  <option>C-Check</option>
+                  <option>D-Check</option>
+                </select>
+              </label>
+              <button type="submit" class="btn btn-primary lg full">Check capability</button>
+            </form>
+
+            <div id="checker-result" class="checker-result" hidden>
+              <div class="cr-badge">✓ GCAA PART-145 RATED</div>
+              <p class="cr-line" id="cr-line"></p>
+              <div class="cr-stats">
+                <div><label>Indicative turnaround</label><span id="cr-tat">—</span></div>
+                <div><label>Next slot</label><span id="cr-slot">Within 2 weeks</span></div>
+                <div><label>Location</label><span>Accra Intl · DGAA</span></div>
+              </div>
+              <a id="cr-cta" class="btn btn-primary lg" href="/#contact">Request this slot →</a>
+              <p class="cr-note">Turnaround is indicative and confirmed on assessment of the work package. All figures subject to slot availability.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/checker.js"></script>
+  </body>
+</html>

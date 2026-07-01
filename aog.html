@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>24/7 AOG Support — Aircraft on Ground | Flight Path Innovation, Accra</title>
+    <meta name="description" content="24/7 Aircraft-on-Ground (AOG) support at Accra International Airport. Rapid dispatch, fault isolation and defect rectification for ATR, Embraer, Boeing and Airbus fleets across West Africa." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body data-nav="">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <main id="main">
+      <nav class="breadcrumb container" aria-label="Breadcrumb"><a href="/">Home</a> / <span>24/7 AOG Support</span></nav>
+
+      <section class="svc-hero aog-hero">
+        <div class="svc-hero-bg" style="background-image:url('/assets/images/line-maintenance.jpg')"></div>
+        <div class="container">
+          <p class="eyebrow" data-reveal><span class="live-dot"></span> AOG DESK ONLINE · 24/7/365</p>
+          <h1 data-reveal>Aircraft on ground?<br />We move now.</h1>
+          <p class="lead" data-reveal>Immediate dispatch, fault isolation and defect rectification to get your aircraft back in revenue service — anywhere across the West-African corridor.</p>
+          <div class="aog-actions" data-reveal>
+            <a href="tel:+233000000000" class="btn btn-primary lg aog-call">📞 Call AOG Desk — +233 (0)30 000 0000</a>
+            <a href="https://wa.me/233000000000?text=AOG%20support%20request" class="btn btn-ghost lg" target="_blank" rel="noopener">WhatsApp AOG</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container aog-grid">
+          <div data-reveal>
+            <p class="eyebrow">RAISE AN AOG</p>
+            <h2>Log your AOG in 30 seconds</h2>
+            <p class="sec-lede">Send the essentials and our on-call team responds immediately. For the fastest response, call the desk directly.</p>
+            <form class="rfq" name="aog" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+              <input type="hidden" name="form-name" value="aog" />
+              <p class="hidden-field"><label>Do not fill: <input name="bot-field" /></label></p>
+              <div class="f-row">
+                <label class="field"><span>Operator *</span><input name="operator" required /></label>
+                <label class="field"><span>Contact phone *</span><input name="phone" type="tel" required /></label>
+              </div>
+              <div class="f-row">
+                <label class="field"><span>Aircraft type</span>
+                  <select name="type"><option value="">Select…</option><option>Airbus A320 family</option><option>Boeing 737 NG / MAX</option><option>Embraer E-Jet</option><option>ATR 42 / 72</option><option>Other</option></select>
+                </label>
+                <label class="field"><span>Registration</span><input name="registration" placeholder="e.g. 9G-ABC" /></label>
+              </div>
+              <div class="f-row">
+                <label class="field"><span>Aircraft location</span><input name="location" placeholder="Airport / stand" /></label>
+                <label class="field"><span>ATA / system</span><input name="ata" placeholder="e.g. ATA 32 gear" /></label>
+              </div>
+              <label class="field"><span>Defect description *</span><textarea name="defect" rows="3" required placeholder="Snag / fault, warnings, MEL status…"></textarea></label>
+              <button type="submit" class="btn btn-primary lg full">Send AOG Request</button>
+              <p class="rfq-status" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+          <aside class="contact-aside" data-reveal>
+            <div class="contact-block aog">
+              <span class="cb-k">AOG DESK · 24/7</span>
+              <a class="cb-big" href="tel:+233000000000">+233 (0)30 000 0000</a>
+              <span class="cb-sub">Direct line to the on-call duty manager.</span>
+            </div>
+            <div class="contact-block">
+              <span class="cb-k">Before you call, have ready</span>
+              <ul class="aog-check">
+                <li>Aircraft type &amp; registration</li>
+                <li>Current location / stand</li>
+                <li>Defect &amp; any warnings / MEL</li>
+                <li>Required return-to-service time</li>
+              </ul>
+            </div>
+            <div class="contact-block">
+              <span class="cb-k">Coverage</span>
+              <span class="cb-v">Accra hub + rapid ferry dispatch across the West-African corridor.</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/aog.js"></script>
+  </body>
+</html>

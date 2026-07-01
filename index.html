@@ -42,7 +42,7 @@
           <a href="#about">About</a>
         </nav>
         <div class="nav-actions">
-          <a href="tel:+233000000000" class="btn btn-aog"><span class="pulse"></span>24/7 AOG</a>
+          <a href="/aog.html" class="btn btn-aog"><span class="pulse"></span>24/7 AOG</a>
           <a href="#contact" class="btn btn-primary">Request a Quote</a>
         </div>
         <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -87,6 +87,7 @@
             <p class="eyebrow">OUR CAPABILITIES</p>
             <h2>Four pillars of fleet support</h2>
             <p class="sec-lede">End-to-end airworthiness under one GCAA Part-145 approval — from rapid line turnarounds to deep structural overhauls and component certification.</p>
+            <a class="cap-link" href="/capability-check.html">Check your requirement instantly →</a>
           </header>
           <div class="cap-grid">
             <article class="cap-card" data-reveal>
@@ -276,7 +277,9 @@
             <p class="eyebrow">REQUEST A QUOTE</p>
             <h2>Talk to our planning desk</h2>
             <p class="sec-lede">Tell us about your aircraft and requirement. Our team responds within one business day — or call the AOG desk now for urgent support.</p>
-            <form id="rfq" class="rfq" novalidate>
+            <form id="rfq" class="rfq" name="rfq" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+              <input type="hidden" name="form-name" value="rfq" />
+              <p class="hidden-field"><label>Do not fill: <input name="bot-field" /></label></p>
               <div class="f-row">
                 <label class="field"><span>Name *</span><input name="name" required autocomplete="name" /></label>
                 <label class="field"><span>Company / Operator *</span><input name="company" required autocomplete="organization" /></label>
@@ -331,11 +334,11 @@
         </div>
         <div class="f-col"><h4>Capabilities</h4><a href="/services/hangar-storage.html">Hangar Storage</a><a href="/services/line-maintenance.html">Line Maintenance</a><a href="/services/base-maintenance.html">Base Maintenance</a><a href="/services/component-mro.html">Component MRO</a></div>
         <div class="f-col"><h4>Company</h4><a href="/network.html">Network &amp; Coverage</a><a href="#about">About</a><a href="/sustainability.html">Sustainability</a><a href="/careers.html">Careers</a></div>
-        <div class="f-col"><h4>Contact</h4><a href="tel:+233000000000">24/7 AOG Desk</a><a href="mailto:sales@flightpathinnovation.com">Commercial</a><a href="#contact">Request a Quote</a></div>
+        <div class="f-col"><h4>Contact</h4><a href="/aog.html">24/7 AOG Support</a><a href="/capability-check.html">Capability Check</a><a href="mailto:sales@flightpathinnovation.com">Commercial</a><a href="#contact">Request a Quote</a></div>
       </div>
       <div class="container footer-base">
         <span>© 2026 Flight Path Innovation. All rights reserved.</span>
-        <span>Accra International Airport · Ghana · Reg. No. ——</span>
+        <span class="footer-legal"><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · Accra International Airport · Ghana · Reg. No. ——</span>
       </div>
     </footer>
 
