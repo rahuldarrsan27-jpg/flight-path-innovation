@@ -10,6 +10,32 @@ export function initEffects() {
   if (fine && !reduce) { startCursorGlow(); enableTilt(); enableMagnetic(); }
   initConsent();
   initWhatsApp();
+  initGrade();
+  initKinetic();
+}
+
+/* ---------- Cinematic grade: film grain + vignette ---------- */
+function initGrade() {
+  if (document.getElementById('grain')) return;
+  const g = document.createElement('div'); g.id = 'grain'; document.body.appendChild(g);
+  const v = document.createElement('div'); v.id = 'vignette'; document.body.appendChild(v);
+}
+
+/* ---------- Kinetic headline mask reveal ---------- */
+function initKinetic() {
+  if (reduce) return;
+  const heads = [...document.querySelectorAll('main h1, main h2')];
+  const io = new IntersectionObserver((es, o) => {
+    es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); o.unobserve(e.target); } });
+  }, { threshold: 0.2, rootMargin: '0px 0px -6% 0px' });
+  heads.forEach((h) => {
+    if (h.dataset.k) return; h.dataset.k = '1';
+    h.innerHTML = `<span class="kinetic-inner">${h.innerHTML}</span>`;
+    h.classList.add('kinetic');
+    io.observe(h);
+    if (h.getBoundingClientRect().top < innerHeight * 0.92) { h.classList.add('in'); io.unobserve(h); }
+  });
+  setTimeout(() => heads.forEach((h) => h.classList.add('in')), 2600); // safety: never leave a heading hidden
 }
 
 /* ---------- Cookie consent (gates analytics) ---------- */
