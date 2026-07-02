@@ -12,6 +12,28 @@ export function initEffects() {
   initWhatsApp();
   initGrade();
   initKinetic();
+  initScrollFX();
+}
+
+/* ---------- Scroll choreography: progress bar + subtle parallax ---------- */
+function initScrollFX() {
+  const bar = document.createElement('div'); bar.id = 'scroll-progress'; document.body.appendChild(bar);
+  const layers = [...document.querySelectorAll('.cap-img')];
+  let ticking = false;
+  function update() {
+    ticking = false;
+    const max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+    if (reduce) return;
+    for (const el of layers) {
+      const r = el.getBoundingClientRect();
+      if (r.bottom < -50 || r.top > innerHeight + 50) continue;
+      const p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight; // -0.5..0.5
+      el.style.transform = `translateY(${p * -18}px) scale(1.1)`;
+    }
+  }
+  addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
+  update();
 }
 
 /* ---------- Cinematic grade: film grain + vignette ---------- */

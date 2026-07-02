@@ -2,6 +2,18 @@ import './style.css';
 import { initEffects } from './effects.js';
 
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+/* Branded preloader — first session visit only, quick, reduced-motion aware */
+(function preloader() {
+  const pl = document.getElementById('preloader');
+  if (!pl) return;
+  const done = () => { pl.classList.add('done'); setTimeout(() => pl.remove(), 700); };
+  if (sessionStorage.getItem('fpi-entered') || matchMedia('(prefers-reduced-motion: reduce)').matches) { pl.remove(); return; }
+  sessionStorage.setItem('fpi-entered', '1');
+  addEventListener('load', () => setTimeout(done, 250));
+  setTimeout(() => document.getElementById('preloader') && done(), 2200); // safety cap
+})();
+
 initEffects();
 
 /* Lazy-load the interactive 3D fleet inspector when it scrolls near view */
