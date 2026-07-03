@@ -16,7 +16,9 @@ const MODELS = {
   b737max: { label: 'Boeing 737 MAX', glb: '/models/b737max.glb', uid: '2747cad8b4c64122abe992c9ad1e8bd1' },
   a320neo: { label: 'Airbus A320neo', glb: '/models/a320neo.glb', uid: 'b14863d4091e41e6abe25832a0af3b00' },
 };
-const SF = 'autostart=1&autospin=0.3&ui_theme=dark&dnt=1&transparent=1&ui_hint=2&ui_color=f0bd6c';
+// ui_infos=0 hides Sketchfab's title/author bar (no author name shown in the viewer);
+// CC-BY attribution is provided on /credits.html. ui_watermark=0 applies on Pro accounts.
+const SF = 'autostart=1&autospin=0.3&ui_theme=dark&dnt=1&transparent=1&ui_infos=0&ui_watermark=0&ui_stop=0&ui_hint=2&ui_color=f0bd6c';
 const HOT = {
   nose:   { t: 'Nose · Avionics & Radar', s: 'Component MRO',   href: '/services/component-mro.html' },
   wing:   { t: 'Wing · Hydraulics & Fuel', s: 'Base Maintenance', href: '/services/base-maintenance.html' },
