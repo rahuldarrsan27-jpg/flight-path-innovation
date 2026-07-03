@@ -8,3 +8,23 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Security + HTTPS hardening on every response.
+# HSTS tells browsers to only ever use HTTPS for this domain (takes effect once
+# the SSL certificate is live). The rest are standard hardening headers.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# Canonical host: 301 www -> apex so Google indexes one clean domain (no
+# duplicate content). Netlify's "primary domain" setting should also be the apex.
+[[redirects]]
+  from = "https://www.fpiaviation.com/*"
+  to = "https://fpiaviation.com/:splat"
+  status = 301
+  force = true
