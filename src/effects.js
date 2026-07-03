@@ -88,7 +88,7 @@ function initConsent() {
 function initWhatsApp() {
   const a = document.createElement('a');
   a.id = 'wa-float';
-  a.href = 'https://wa.me/233000000000?text=Hello%20Flight%20Path%20Innovation';
+  a.href = 'https://wa.me/233554352912?text=Hello%20FPI%20Aviation';
   a.target = '_blank'; a.rel = 'noopener'; a.setAttribute('aria-label', 'Chat with us on WhatsApp');
   a.innerHTML = `<svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.06 1.6 5.82L2 22l4.4-1.15a9.9 9.9 0 0 0 5.64 1.74h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.03c-.24.68-1.4 1.3-1.94 1.34-.5.04-.5.4-3.15-.66-2.66-1.05-4.35-3.77-4.48-3.95-.13-.18-1.08-1.44-1.08-2.75s.69-1.95.94-2.22c.24-.27.53-.34.7-.34l.5.01c.16 0 .38-.06.59.45.24.58.82 2 .9 2.14.07.14.12.31.02.5-.09.18-.14.29-.28.45l-.42.49c-.14.14-.28.29-.12.57.16.28.72 1.18 1.54 1.91 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.18-.2.7-.81.89-1.09.18-.28.37-.23.62-.14.25.09 1.6.76 1.87.9.28.14.46.21.53.32.07.12.07.66-.17 1.34z"/></svg>`;
   document.body.appendChild(a);

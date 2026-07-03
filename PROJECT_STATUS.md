@@ -25,8 +25,12 @@ SEO foundations (sitemap, robots, OG/Twitter, LocalBusiness JSON-LD); legal + co
 All committed + pushed to https://github.com/rahuldarrsan27-jpg/flight-path-innovation
 
 ## OPEN / NEXT (priority order)
-1. **Pick a logo** — 6 options were presented; once chosen, roll out to nav, footer,
-   favicon, preloader, og-image.
+1. **Logo — DONE.** FPI Aviation mark applied to nav, footer, preloader, favicons
+   (16/32/180/192/512) + web manifest. Master kept at `brand/logo-source.jpeg`;
+   regenerate icons via `brand/generate-icons.js` (needs `npm i -D jimp@0.22.12`).
+   Web assets: `public/assets/logo-mark-light.png` (white+blue, dark theme) +
+   `logo-mark.png` (dark-on-light); favicons in `public/`. Optional next: a
+   logo-based OG share image (OG currently uses a facility photo).
 2. **Domain** — when added, update the `fpiaviation.com` placeholder in:
    canonical + OG/Twitter URLs (`index.html` head), `public/sitemap.xml`,
    `public/robots.txt`, JSON-LD `@id`/url. Critical for SEO.
@@ -39,9 +43,10 @@ All committed + pushed to https://github.com/rahuldarrsan27-jpg/flight-path-inno
 7. Remaining visual polish available: custom cursor, 404 page, day→night toggle.
 
 ## Placeholders to replace before launch
-Phone `+233 30 000 0000`, emails, GCAA cert no. `GH-AMO-2024`, company Reg. No.,
-facility stats/TAT figures (illustrative), WhatsApp number, analytics ID
-(hook in `effects.js` `loadAnalytics()`).
+Emails (`@fpiaviation.com` — set up mailboxes once the domain is live), GCAA cert
+no. `GH-AMO-2024`, company Reg. No., facility stats/TAT figures (illustrative),
+analytics ID (hook in `effects.js` `loadAnalytics()`).
+Phone + WhatsApp are set to **+233 55 435 2912**.
 
 ## Deploy / push
 Cached git credentials work: `git -C <repo> push`. Netlify auto-redeploys on push

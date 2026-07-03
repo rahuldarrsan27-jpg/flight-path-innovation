@@ -1,5 +1,5 @@
 // Shared site chrome (nav + footer + AOG) and behaviours for inner pages.
-const BRAND = `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 12l9-2 4-7h1l-1 8 7 2-7 2 1 8h-1l-4-7-9-2z"/></svg><span class="brand-txt">FPI <b>AVIATION</b></span>`;
+const BRAND = `<img class="brand-mark" src="/assets/logo-mark-light.png" alt="FPI Aviation" width="30" height="28" /><span class="brand-txt">FPI <b>AVIATION</b></span>`;
 
 const navHTML = (active) => `
   <div class="nav-inner container">
@@ -53,7 +53,7 @@ export function mountChrome(active) {
   document.body.appendChild(footer);
 
   const aog = document.createElement('a');
-  aog.href = 'tel:+233000000000'; aog.className = 'aog-float';
+  aog.href = 'tel:+233554352912'; aog.className = 'aog-float';
   aog.setAttribute('aria-label', 'Call 24/7 AOG desk');
   aog.innerHTML = '<span class="pulse"></span>24/7 AOG';
   document.body.appendChild(aog);
