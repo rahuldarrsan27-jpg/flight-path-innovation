@@ -1,6 +1,6 @@
 # Project status & handoff notes
 
-Marketing site for **Flight Path Innovation** — GCAA Part-145 aircraft MRO at Accra
+Marketing site for **FPI Aviation** — GCAA Part-145 aircraft MRO at Accra
 International Airport. Read this first when resuming in a new session.
 
 ## Stack & structure
@@ -27,7 +27,7 @@ All committed + pushed to https://github.com/rahuldarrsan27-jpg/flight-path-inno
 ## OPEN / NEXT (priority order)
 1. **Pick a logo** — 6 options were presented; once chosen, roll out to nav, footer,
    favicon, preloader, og-image.
-2. **Domain** — when added, update the `flightpathinnovation.com` placeholder in:
+2. **Domain** — when added, update the `fpiaviation.com` placeholder in:
    canonical + OG/Twitter URLs (`index.html` head), `public/sitemap.xml`,
    `public/robots.txt`, JSON-LD `@id`/url. Critical for SEO.
 3. **SEO off-page (user's Google account)**: Search Console + submit sitemap;

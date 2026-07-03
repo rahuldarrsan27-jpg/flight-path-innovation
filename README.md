@@ -1,6 +1,6 @@
-# Flight Path Innovation
+# FPI Aviation
 
-Marketing website for **Flight Path Innovation** — a GCAA Part-145 approved aircraft
+Marketing website for **FPI Aviation** — a GCAA Part-145 approved aircraft
 maintenance, repair and overhaul (MRO) provider operating from Accra International
 Airport, Ghana. Hangar storage, line & base maintenance and component MRO for ATR,
 Embraer, Boeing and Airbus narrowbody and regional fleets.

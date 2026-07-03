@@ -1,9 +1,9 @@
 // Shared site chrome (nav + footer + AOG) and behaviours for inner pages.
-const BRAND = `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 12l9-2 4-7h1l-1 8 7 2-7 2 1 8h-1l-4-7-9-2z"/></svg><span class="brand-txt">FLIGHT PATH <b>INNOVATION</b></span>`;
+const BRAND = `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 12l9-2 4-7h1l-1 8 7 2-7 2 1 8h-1l-4-7-9-2z"/></svg><span class="brand-txt">FPI <b>AVIATION</b></span>`;
 
 const navHTML = (active) => `
   <div class="nav-inner container">
-    <a class="brand" href="/" aria-label="Flight Path Innovation home">${BRAND}</a>
+    <a class="brand" href="/" aria-label="FPI Aviation home">${BRAND}</a>
     <nav class="nav-links" aria-label="Primary">
       <a href="/#capabilities"${active === 'capabilities' ? ' class="active"' : ''}>Capabilities</a>
       <a href="/network.html"${active === 'network' ? ' class="active"' : ''}>Network</a>
@@ -35,11 +35,11 @@ const footerHTML = `
       <a href="/network.html">Network &amp; Coverage</a><a href="/#about">About</a><a href="/sustainability.html">Sustainability</a><a href="/careers.html">Careers</a>
     </div>
     <div class="f-col"><h4>Contact</h4>
-      <a href="/aog.html">24/7 AOG Support</a><a href="/capability-check.html">Capability Check</a><a href="mailto:sales@flightpathinnovation.com">Commercial</a><a href="/#contact">Request a Quote</a>
+      <a href="/aog.html">24/7 AOG Support</a><a href="/capability-check.html">Capability Check</a><a href="mailto:sales@fpiaviation.com">Commercial</a><a href="/#contact">Request a Quote</a>
     </div>
   </div>
   <div class="container footer-base">
-    <span>© 2026 Flight Path Innovation. All rights reserved.</span>
+    <span>© 2026 FPI Aviation. All rights reserved.</span>
     <span class="footer-legal"><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/credits.html">Credits</a> · Accra International Airport · Ghana · Reg. No. ——</span>
   </div>`;
 

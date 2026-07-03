@@ -65,7 +65,7 @@ function loadAnalytics() {
   // Drop your analytics snippet here — it only runs after consent = accept.
   // Plausible example:
   //   const s = document.createElement('script');
-  //   s.defer = true; s.dataset.domain = 'flightpathinnovation.com';
+  //   s.defer = true; s.dataset.domain = 'fpiaviation.com';
   //   s.src = 'https://plausible.io/js/script.js'; document.head.appendChild(s);
 }
 function initConsent() {
