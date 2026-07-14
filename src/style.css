@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Exo+2:wght@400;500;600;700;800&display=swap');
 :root{
   --bg:#060b14;--bg-2:#0a1220;--surface:#0f1d33;--surface-2:#16294a;
   --ink:#f6f8fb;--muted:#aebccf;--faint:#7d8ba1;
   --gold:#d8a14a;--gold-b:#f0bd6c;--cyan:#7fd8ff;
   --line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.14);
-  --fd:"Poppins","Space Grotesk",sans-serif;--fb:"Inter",sans-serif;--fm:"IBM Plex Mono",monospace;
+  --fd:"Exo 2","Poppins",sans-serif;--fb:"Inter",sans-serif;--fm:"IBM Plex Mono",monospace;
   --maxw:1240px;--r:14px;--ease:cubic-bezier(.4,0,.2,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
