@@ -1,5 +1,5 @@
 // Shared site chrome (nav + footer + AOG) and behaviours for inner pages.
-const BRAND = `<img class="brand-mark" src="/assets/logo-mark-light.png" alt="" width="30" height="28" /><img class="brand-word" src="/assets/logo-wordmark-light.png" alt="FPI Aviation" width="124" height="16" />`;
+const BRAND = `<img class="brand-mark" src="/assets/logo-mark-light.png" alt="" width="28" height="28" /><img class="brand-word" src="/assets/logo-wordmark-light.png" alt="FPI Aviation" width="126" height="16" />`;
 
 const navHTML = (active) => `
   <div class="nav-inner container">
