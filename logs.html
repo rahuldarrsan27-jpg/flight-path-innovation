@@ -11,19 +11,72 @@
     <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body>
-    <!-- Gate. No record data exists in this markup: the app below is empty until a
-         session is confirmed, and unauthenticated visitors are sent to /login. -->
+    <!-- Gate. No record data exists in this markup — the app below stays empty
+         until the server confirms a session, and every data route requires one. -->
     <div id="gate">
       <div class="card" id="checking">
+        <div class="brand"><img src="/assets/logo-mark-light.png" alt="" width="30" height="30" /></div>
         <h1>Hangar Log</h1>
         <p>Checking your session…</p>
       </div>
-      <div class="card hide" id="needsConfig">
-        <h1>Not connected yet</h1>
+
+      <!-- First run only: claims the single owner account, then closes sign-ups. -->
+      <div class="card hide" id="setupBox">
+        <div class="brand"><img src="/assets/logo-mark-light.png" alt="" width="30" height="30" /></div>
+        <h1>Create your login</h1>
         <p>
-          This module has no database configured. Set <code>VITE_SUPABASE_URL</code> and
-          <code>VITE_SUPABASE_ANON_KEY</code> in Netlify → Site configuration →
-          Environment variables, then redeploy. See <code>src/hangar/SETUP.md</code>.
+          This is a one-off. Choose the email and password you will use to reach your
+          hangar records. Once set, no further accounts can be created.
+        </p>
+        <form id="setupForm">
+          <div class="row">
+            <label for="suEmail">Email</label>
+            <input type="email" id="suEmail" required autocomplete="username" />
+          </div>
+          <div class="row">
+            <label for="suPass">Password <span class="hint">at least 10 characters</span></label>
+            <input type="password" id="suPass" required minlength="10" autocomplete="new-password" />
+          </div>
+          <div class="row">
+            <label for="suPass2">Confirm password</label>
+            <input type="password" id="suPass2" required minlength="10" autocomplete="new-password" />
+          </div>
+          <div class="actions">
+            <button class="btn" type="submit" id="suBtn">Create my login</button>
+          </div>
+        </form>
+        <div class="msg" id="setupMsg" role="status" aria-live="polite"></div>
+      </div>
+
+      <!-- Normal sign-in. -->
+      <div class="card hide" id="authBox">
+        <div class="brand"><img src="/assets/logo-mark-light.png" alt="" width="30" height="30" /></div>
+        <h1>Hangar Log</h1>
+        <p>Sign in to reach your records.</p>
+        <form id="authForm">
+          <div class="row">
+            <label for="email">Email</label>
+            <input type="email" id="email" required autocomplete="username" />
+          </div>
+          <div class="row">
+            <label for="password">Password</label>
+            <input type="password" id="password" required autocomplete="current-password" />
+          </div>
+          <div class="actions">
+            <button class="btn" type="submit" id="signInBtn">Sign in</button>
+          </div>
+        </form>
+        <div class="msg" id="authMsg" role="status" aria-live="polite"></div>
+        <a class="back" href="/">← Back to fpiaviation.com</a>
+      </div>
+
+      <!-- Shown only if the API cannot be reached at all. -->
+      <div class="card hide" id="noApi">
+        <h1>Service unavailable</h1>
+        <p>
+          The records service did not respond. This page needs to run on the deployed
+          site (the API is a Netlify Function). Reload in a moment, or check the
+          Netlify deploy log.
         </p>
       </div>
     </div>
@@ -168,6 +221,6 @@
         </section>
       </main>
     </div>
-    <script type="module" src="/src/hangar/hangar.js"></script>
+    <script type="module" src="/src/hangar/logs.js"></script>
   </body>
 </html>

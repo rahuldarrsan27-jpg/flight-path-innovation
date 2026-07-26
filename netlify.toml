@@ -2,6 +2,7 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  functions = "netlify/functions"
 
 # Long-cache the fingerprinted build assets.
 [[headers]]
@@ -21,26 +22,22 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
-# Clean URLs for the internal module: /hangar and /login (no .html).
+# Clean URL for the internal module: /logs (no .html).
 [[redirects]]
-  from = "/hangar"
-  to = "/hangar.html"
+  from = "/logs"
+  to = "/logs.html"
   status = 200
 
-[[redirects]]
-  from = "/login"
-  to = "/login.html"
-  status = 200
-
-# Belt-and-braces: never let the protected module be indexed or framed.
+# Belt-and-braces: never let the protected module or its API be indexed or framed.
 [[headers]]
-  for = "/hangar*"
+  for = "/logs*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
     Cache-Control = "no-store"
+    X-Frame-Options = "DENY"
 
 [[headers]]
-  for = "/login*"
+  for = "/api/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
     Cache-Control = "no-store"

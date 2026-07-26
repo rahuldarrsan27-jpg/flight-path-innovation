@@ -180,3 +180,6 @@ td.rowact, .rowact { white-space: nowrap; }
   .empty { color: #555; }
   a[href]::after { content: ""; }
 }
+
+/* small inline hint next to a label */
+.row .hint { color: var(--faint, #7d8ba1); font-weight: 400; text-transform: none; letter-spacing: 0; }

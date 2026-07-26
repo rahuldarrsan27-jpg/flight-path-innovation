@@ -22,8 +22,7 @@ export default defineConfig({
         terms: resolve(root, 'terms.html'),
         credits: resolve(root, 'credits.html'),
         // Protected internal module (noindex, not linked from the marketing pages).
-        login: resolve(root, 'login.html'),
-        hangar: resolve(root, 'hangar.html'),
+        logs: resolve(root, 'logs.html'),
       },
     },
   },
