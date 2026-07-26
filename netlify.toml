@@ -28,6 +28,13 @@
   to = "/logs.html"
   status = 200
 
+# Records API. The function also declares this path itself (Functions v2
+# `config.path`); this redirect is the fallback so routing does not depend on it.
+[[redirects]]
+  from = "/api/logs/*"
+  to = "/.netlify/functions/logs/:splat"
+  status = 200
+
 # Belt-and-braces: never let the protected module or its API be indexed or framed.
 [[headers]]
   for = "/logs*"

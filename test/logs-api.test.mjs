@@ -175,6 +175,23 @@ test('client-supplied id/user fields are ignored on write', async () => {
   assert.equal(r.json.data[0].user_id, undefined);
 });
 
+test('routing works via the raw function path too (redirect fallback)', async () => {
+  stub.__reset();
+  const s = await handler(new Request('https://fpiaviation.com/.netlify/functions/logs/setup', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ email: EMAIL, password: PW }),
+  }));
+  assert.equal(s.status, 200, 'setup reachable at the raw function path');
+
+  const anon = await handler(new Request('https://fpiaviation.com/.netlify/functions/logs/data'));
+  assert.equal(anon.status, 401, 'still gated at the raw function path');
+
+  const cookie = cookieFrom(s.headers.get('set-cookie'));
+  const authed = await handler(new Request('https://fpiaviation.com/.netlify/functions/logs/data', { headers: { cookie } }));
+  assert.equal(authed.status, 200);
+});
+
 test('sign-out clears the cookie', async () => {
   stub.__reset();
   await call('POST', 'setup', { body: { email: EMAIL, password: PW } });

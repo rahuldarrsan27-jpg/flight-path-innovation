@@ -111,7 +111,11 @@ function pick(row, fields) {
 export default async (req) => {
   const s = store();
   const url = new URL(req.url);
-  const seg = url.pathname.replace(/^\/api\/logs\/?/, '').split('/').filter(Boolean);
+  // Accept both the pretty route (/api/logs/...) and the raw function path, so the
+  // module works whether it is reached via `config.path` or the netlify.toml redirect.
+  const seg = url.pathname
+    .replace(/^\/(?:api\/logs|\.netlify\/functions\/logs)\/?/, '')
+    .split('/').filter(Boolean);
   const action = seg[0] || '';
   const id = seg[1] || '';
   const method = req.method.toUpperCase();
