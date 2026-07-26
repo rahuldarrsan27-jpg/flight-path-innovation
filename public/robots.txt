@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# Internal, session-protected module — keep it out of search results.
+Disallow: /hangar
+Disallow: /hangar.html
+Disallow: /login
+Disallow: /login.html
+
 Sitemap: https://fpiaviation.com/sitemap.xml

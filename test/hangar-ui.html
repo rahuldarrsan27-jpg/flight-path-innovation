@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangar Log — UI harness</title>
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body>
+    <!-- Harness: the real hangar.html markup + the real app.js, driven against an
+         in-memory stand-in for supabase-js. Lets the UI, cascade delete, summary
+         strip and 390px layout be exercised without a live database.
+         Not part of the site build (test/ is outside vite.config.js inputs). -->
+    <div id="app" class="hide">
+      <header>
+        <div class="brand"><h1>Hangar Log</h1></div>
+        <span class="sub" id="clock"></span>
+        <span class="spacer"></span>
+        <span class="sub" id="whoami"></span>
+        <button class="btn ghost" id="btnExport">Backup</button>
+        <button class="btn ghost" id="btnImport">Restore</button>
+        <button class="btn ghost" id="btnCsv">CSV</button>
+        <button class="btn ghost" id="btnOut">Sign out</button>
+        <input type="file" id="fileInput" accept="application/json" hidden />
+      </header>
+      <div class="tabs">
+        <button data-tab="records" class="active">1 · Aircraft Records</button>
+        <button data-tab="jobs">2 · Job Done</button>
+      </div>
+      <div class="tabwrap"></div>
+      <main>
+        <section class="view active" id="view-records">
+          <form class="card" id="acForm">
+            <h2 id="acFormTitle">New aircraft record</h2>
+            <input type="hidden" id="acId" />
+            <div class="grid">
+              <div><label>Airline / Operator *</label><input id="airline" required placeholder="e.g. Africa World Airlines" /></div>
+              <div><label>Aircraft type *</label><input id="type" required placeholder="e.g. Embraer ERJ-145" /></div>
+              <div><label>Registration</label><input id="reg" placeholder="e.g. 9G-AAB" /></div>
+              <div><label>Contract signed on <button type="button" class="link now" data-now="contractDate">today</button></label><input type="date" id="contractDate" /></div>
+              <div><label>Arrived in hangar <button type="button" class="link now" data-now="inAt">now</button></label><input type="datetime-local" id="inAt" /></div>
+              <div><label>Left hangar <button type="button" class="link now" data-now="outAt">now</button></label><input type="datetime-local" id="outAt" /></div>
+              <div><label>Amount agreed</label><input type="number" id="amount" step="0.01" min="0" placeholder="0.00" /></div>
+              <div><label>Currency</label><select id="currency"><option value="GHS">GHS — Ghana Cedi</option><option value="USD">USD — US Dollar</option></select></div>
+              <div class="full"><label>Notes</label><textarea id="acNotes" style="min-height:58px"></textarea></div>
+            </div>
+            <div class="actions">
+              <button class="btn" type="submit" id="acSubmit">Save record</button>
+              <button class="btn ghost" type="button" id="acCancel" hidden>Cancel edit</button>
+            </div>
+          </form>
+          <div class="card"><div class="stats" id="stats"></div></div>
+          <div class="card">
+            <div class="toolbar"><h2 style="margin:0">Recorded aircraft</h2><span style="flex:1"></span>
+              <input type="search" id="acSearch" placeholder="Search airline, type, reg…" /></div>
+            <div class="tablewrap">
+              <table id="acTable"><thead><tr>
+                <th>Airline</th><th>Type</th><th>Reg</th><th>Contract</th><th>In</th><th>Out</th>
+                <th>Duration</th><th class="num">Amount</th><th>Status</th><th class="num">Jobs</th><th></th>
+              </tr></thead><tbody></tbody></table>
+            </div>
+            <div class="empty" id="acEmpty" hidden>No records yet. Add the first aircraft above.</div>
+          </div>
+        </section>
+        <section class="view" id="view-jobs">
+          <form class="card" id="jobForm">
+            <h2 id="jobFormTitle">Log a job</h2>
+            <input type="hidden" id="jobId" />
+            <div class="grid">
+              <div class="full"><label>Aircraft *</label>
+                <select id="jobAircraft" required><option value="">Select a recorded aircraft…</option></select>
+                <div id="jobSummary"></div></div>
+              <div><label>Job date <button type="button" class="link now" data-now="jobDate">today</button></label><input type="date" id="jobDate" /></div>
+              <div><label>Job type</label><select id="jobType">
+                <option>Line maintenance</option><option>Base maintenance</option><option>A-Check</option>
+                <option>C-Check</option><option>Structural repair</option><option>Engine</option>
+                <option>Avionics</option><option>Painting</option><option>Interior</option>
+                <option>Inspection</option><option>Other</option></select></div>
+              <div><label>Performed by</label><input id="jobBy" /></div>
+              <div><label>Man-hours</label><input type="number" id="jobHours" step="0.5" min="0" /></div>
+              <div><label>Status</label><select id="jobStatus"><option>In progress</option><option>Completed</option><option>On hold</option></select></div>
+              <div class="full"><label>Description of work done *</label><textarea id="jobDesc" required></textarea></div>
+            </div>
+            <div class="actions">
+              <button class="btn" type="submit" id="jobSubmit">Save job</button>
+              <button class="btn ghost" type="button" id="jobCancel" hidden>Cancel edit</button>
+            </div>
+          </form>
+          <div class="card">
+            <div class="toolbar"><h2 style="margin:0">Job sheets</h2><span style="flex:1"></span>
+              <select id="jobFilter" style="max-width:250px"><option value="">All aircraft</option></select>
+              <input type="search" id="jobSearch" placeholder="Search description…" /></div>
+            <div id="jobList"></div>
+            <div class="empty" id="jobEmpty" hidden>No jobs logged yet.</div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/test/hangar-ui.js"></script>
+  </body>
+</html>

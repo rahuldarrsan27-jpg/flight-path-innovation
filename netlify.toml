@@ -21,6 +21,30 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
+# Clean URLs for the internal module: /hangar and /login (no .html).
+[[redirects]]
+  from = "/hangar"
+  to = "/hangar.html"
+  status = 200
+
+[[redirects]]
+  from = "/login"
+  to = "/login.html"
+  status = 200
+
+# Belt-and-braces: never let the protected module be indexed or framed.
+[[headers]]
+  for = "/hangar*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/login*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+
 # Canonical host: 301 www -> apex so Google indexes one clean domain (no
 # duplicate content). Netlify's "primary domain" setting should also be the apex.
 [[redirects]]

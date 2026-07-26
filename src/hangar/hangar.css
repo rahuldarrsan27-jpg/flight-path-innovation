@@ -1,0 +1,182 @@
+/* Hangar Log — internal operations tool. Uses the site's dark palette and display
+   font, but denser than the marketing pages. Deliberately standalone: no marketing
+   nav/footer, so nothing here can leak onto a public route. */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #060b14;
+  --panel: #0f1d33;
+  --panel-2: #16294a;
+  --line: rgba(255, 255, 255, .1);
+  --line-2: rgba(255, 255, 255, .16);
+  --text: #f6f8fb;
+  --muted: #aebccf;
+  --accent: #2b7fff;
+  --gold-b: #f0bd6c;
+  --green: #34d399;
+  --amber: #fbbf24;
+  --red: #f87171;
+  --radius: 10px;
+  --fd: "Exo 2", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 15px/1.5 var(--fd); -webkit-font-smoothing: antialiased;
+}
+.hide { display: none !important; }
+
+header {
+  padding: 12px 20px; border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+header .brand { display: flex; align-items: center; gap: 9px; min-width: 0; }
+header .brand img { height: 26px; width: auto; flex: none; display: block; }
+header h1 { font-size: 15px; margin: 0; font-weight: 600; letter-spacing: .02em; }
+header .sub { color: var(--muted); font-size: 12.5px; }
+header .spacer { flex: 1; }
+
+.tabs { display: flex; gap: 6px; padding: 12px 20px 0; }
+.tabs button {
+  background: none; border: 1px solid transparent; border-bottom: none; color: var(--muted);
+  padding: 10px 16px; font: 500 14px var(--fd); cursor: pointer;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.tabs button:hover { color: var(--text); }
+.tabs button.active {
+  background: var(--panel); color: var(--text); border-color: var(--line);
+  position: relative; top: 1px;
+}
+.tabwrap { border-top: 1px solid var(--line); }
+main { padding: 20px; max-width: 1400px; }
+.view { display: none; }
+.view.active { display: block; }
+
+.card {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 16px; margin-bottom: 18px;
+}
+.card h2 {
+  margin: 0 0 12px; font-size: 13px; text-transform: uppercase;
+  letter-spacing: .8px; color: var(--muted); font-weight: 600;
+}
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 13px; }
+label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
+input, select, textarea {
+  width: 100%; background: var(--panel-2); color: var(--text); border: 1px solid var(--line-2);
+  border-radius: 7px; padding: 9px 10px; font: inherit; font-size: 14px;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+textarea { resize: vertical; min-height: 88px; }
+.full { grid-column: 1 / -1; }
+
+.actions { display: flex; gap: 10px; margin-top: 15px; align-items: center; flex-wrap: wrap; }
+button.btn {
+  background: var(--accent); color: #fff; border: none; border-radius: 7px;
+  padding: 10px 18px; font: 600 14px var(--fd); cursor: pointer;
+}
+button.btn:hover { filter: brightness(1.08); }
+button.btn:disabled { opacity: .5; cursor: default; }
+button.ghost { background: none; color: var(--muted); border: 1px solid var(--line-2); font-weight: 500; }
+button.ghost:hover { color: var(--text); border-color: var(--muted); }
+button.link {
+  background: none; border: none; color: var(--accent); cursor: pointer;
+  font: inherit; font-size: 13px; padding: 2px 6px;
+}
+button.link.danger { color: var(--red); }
+button.link.now { font-size: 11px; padding: 0 5px; }
+
+.toolbar { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+.toolbar input[type=search] { max-width: 260px; }
+
+/* Wide tables scroll inside their own container, never the page body. */
+.tablewrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th {
+  color: var(--muted); font-size: 11.5px; text-transform: uppercase;
+  letter-spacing: .6px; white-space: nowrap;
+}
+tbody tr:hover { background: var(--panel-2); }
+td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.rowact, .rowact { white-space: nowrap; }
+.empty { color: var(--muted); padding: 26px; text-align: center; font-size: 14px; }
+
+.pill { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.pill.in { background: rgba(251, 191, 36, .15); color: var(--amber); }
+.pill.out { background: rgba(52, 211, 153, .15); color: var(--green); }
+.pill.wait { background: rgba(174, 188, 207, .15); color: var(--muted); }
+
+.summary {
+  background: var(--panel-2); border: 1px solid var(--line); border-left: 3px solid var(--accent);
+  border-radius: 7px; padding: 10px 12px; margin-top: 10px;
+  display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 12px;
+}
+.summary .item { display: flex; flex-direction: column; }
+.summary .k { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .5px; }
+.summary .v { font-size: 12.5px; }
+.summary.mini { margin: 0 0 6px; border-left-width: 2px; padding: 7px 10px; gap: 4px 16px; }
+
+.jobcard {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 13px; margin-bottom: 12px; background: var(--panel-2);
+}
+.jobcard .head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.jobcard .title { font-weight: 600; font-size: 14px; }
+.jobcard .meta { color: var(--muted); font-size: 12px; }
+.jobcard .desc { white-space: pre-wrap; margin-top: 8px; font-size: 13.5px; overflow-wrap: anywhere; }
+
+.stats { display: flex; gap: 24px; flex-wrap: wrap; }
+.stat .n { font-size: 21px; font-weight: 600; }
+.stat .l { color: var(--muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: .6px; }
+
+/* ---- gate: setup notice / sign-in / session check ---- */
+#gate { max-width: 430px; margin: 8vh auto; padding: 0 20px; }
+#gate .card { padding: 24px; }
+#gate .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+#gate .brand img { height: 30px; width: auto; }
+#gate h1 { font-size: 19px; margin: 0 0 6px; font-weight: 600; }
+#gate p { color: var(--muted); font-size: 13.5px; margin: 0 0 18px; }
+#gate .row { margin-bottom: 12px; }
+#gate .msg { font-size: 13px; margin-top: 12px; min-height: 18px; }
+#gate .msg.err { color: var(--red); }
+#gate .msg.ok { color: var(--green); }
+#gate code { background: var(--panel-2); padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+#gate .back { display: inline-block; margin-top: 16px; color: var(--muted); font-size: 12.5px; text-decoration: none; }
+#gate .back:hover { color: var(--text); }
+
+#toast {
+  position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+  background: var(--panel-2); border: 1px solid var(--line-2); color: var(--text);
+  padding: 10px 18px; border-radius: 8px; font-size: 13.5px; z-index: 99;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .45); max-width: calc(100vw - 32px);
+}
+#toast.err { border-color: var(--red); color: var(--red); }
+
+/* Phone: single-column forms, full-width tabs, nothing overflowing the body. */
+@media (max-width: 640px) {
+  header { padding: 10px 14px; gap: 8px; }
+  header h1 { font-size: 14px; }
+  main { padding: 14px; }
+  .tabs { padding: 10px 14px 0; }
+  .tabs button { flex: 1; padding: 10px 8px; font-size: 13px; }
+  .grid { grid-template-columns: 1fr; }
+  .card { padding: 13px; }
+  .toolbar input[type=search], .toolbar select { max-width: none; width: 100%; }
+  .stats { gap: 14px 22px; }
+  .summary { gap: 6px 14px; }
+}
+
+@media print {
+  header, .tabs, .tabwrap, .toolbar, .actions, form.card, button, #toast, #gate { display: none !important; }
+  body { background: #fff; color: #000; font-size: 11pt; }
+  main { padding: 0; max-width: none; }
+  .view { display: block !important; }
+  .card, .jobcard, .summary { border-color: #bbb; background: #fff; break-inside: avoid; }
+  .card h2, .summary .k, .stat .l, th { color: #333; }
+  .pill { border: 1px solid #999; color: #000 !important; background: none !important; }
+  .tablewrap { overflow: visible; }
+  .empty { color: #555; }
+  a[href]::after { content: ""; }
+}
