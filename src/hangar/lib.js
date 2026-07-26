@@ -78,7 +78,7 @@ export function acLabel(ac) {
 // snake_case DB row <-> camelCase in-memory shape.
 export function acFromRow(r) {
   return {
-    id: r.id, airline: r.airline, type: r.type, reg: r.reg, contractDate: r.contract_date,
+    id: r.id, airline: r.airline, type: r.type, reg: r.reg, serial: r.serial, contractDate: r.contract_date,
     inAt: r.in_at, outAt: r.out_at, amount: r.amount, currency: r.currency, notes: r.notes,
   };
 }
@@ -95,7 +95,7 @@ export function jobFromRow(r) {
 const numOrNull = (v) => (v === '' || v == null ? null : Number(v));
 export function aircraftRowsFromBackup(d) {
   return (d.aircraft || []).map((a) => ({
-    airline: a.airline, type: a.type, reg: a.reg || null,
+    airline: a.airline, type: a.type, reg: a.reg || null, serial: a.serial || null,
     contract_date: a.contractDate || null, in_at: toISO(a.inAt), out_at: toISO(a.outAt),
     amount: numOrNull(a.amount), currency: a.currency || 'GHS', notes: a.notes || null,
   }));
@@ -112,13 +112,13 @@ export function jobRowsFromBackup(d, idMap) {
 // get a row. Leading UTF-8 BOM so Excel renders the Ghana Cedi symbol.
 export function csvString(db) {
   const q = (v) => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
-  const header = ['Airline', 'Aircraft type', 'Registration', 'Contract signed', 'In hangar',
+  const header = ['Airline', 'Aircraft type', 'Registration', 'Serial number (MSN)', 'Contract signed', 'In hangar',
     'Out of hangar', 'Duration', 'Amount', 'Currency', 'Job date', 'Job type', 'Performed by',
     'Man-hours', 'Job status', 'Description'];
   const lines = [header.map(q).join(',')];
   (db.aircraft || []).forEach((a) => {
     const js = (db.jobs || []).filter((j) => j.aircraftId === a.id);
-    const base = [a.airline, a.type, a.reg, a.contractDate, fmtDateTime(a.inAt),
+    const base = [a.airline, a.type, a.reg, a.serial, a.contractDate, fmtDateTime(a.inAt),
       fmtDateTime(a.outAt), duration(a.inAt, a.outAt), a.amount, a.currency];
     if (!js.length) lines.push(base.concat(['', '', '', '', '', '']).map(q).join(','));
     else js.forEach((j) => lines.push(

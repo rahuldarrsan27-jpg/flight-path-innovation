@@ -97,7 +97,7 @@ async function readData(s, owner) {
 }
 const writeData = (s, owner, d) => s.setJSON(dataKey(owner), d);
 
-const AC_FIELDS = ['airline', 'type', 'reg', 'contract_date', 'in_at', 'out_at', 'amount', 'currency', 'notes'];
+const AC_FIELDS = ['airline', 'type', 'reg', 'serial', 'contract_date', 'in_at', 'out_at', 'amount', 'currency', 'notes'];
 const JOB_FIELDS = ['aircraft_id', 'job_date', 'job_type', 'performed_by', 'hours', 'status', 'description'];
 
 // Only known columns are copied in, so a caller cannot inject id/user fields.

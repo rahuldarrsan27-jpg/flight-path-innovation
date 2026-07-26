@@ -130,12 +130,13 @@ test('records round-trip, and deleting an aircraft removes its job sheets', asyn
 
   const ac = await call('POST', 'aircraft', {
     cookie,
-    body: { rows: [{ airline: 'Africa World Airlines', type: 'Embraer ERJ-145', reg: '9G-AAB', in_at: '2026-07-01T09:30:00.000Z', amount: 42000, currency: 'GHS' }] },
+    body: { rows: [{ airline: 'Africa World Airlines', type: 'Embraer ERJ-145', reg: '9G-AAB', serial: '145-628', in_at: '2026-07-01T09:30:00.000Z', amount: 42000, currency: 'GHS' }] },
   });
   assert.equal(ac.status, 200);
   const acId = ac.json.data[0].id;
   assert.match(acId, /^[0-9a-f-]{36}$/);
   assert.equal(ac.json.data[0].currency, 'GHS');
+  assert.equal(ac.json.data[0].serial, '145-628', 'serial accepted and stored');
 
   const j = await call('POST', 'jobs', {
     cookie, body: { rows: [{ aircraft_id: acId, job_type: 'A-Check', description: 'line 1\nline 2', hours: 12.5 }] },

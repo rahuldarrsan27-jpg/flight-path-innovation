@@ -54,7 +54,7 @@ test('money uses the row currency and never mixes them', () => {
 test('restore maps arbitrary string ids so jobs stay attached', () => {
   const backup = {
     aircraft: [
-      { id: 'lx8f2a', airline: 'Africa World Airlines', type: 'Embraer ERJ-145', reg: '9G-AAB', amount: '42000', inAt: '2026-07-01T09:30' },
+      { id: 'lx8f2a', airline: 'Africa World Airlines', type: 'Embraer ERJ-145', reg: '9G-AAB', serial: '145-628', amount: '42000', inAt: '2026-07-01T09:30' },
       { id: '7', airline: 'Passion Air', type: 'Dash 8-Q400', reg: '', amount: '' },
     ],
     jobs: [
@@ -66,6 +66,8 @@ test('restore maps arbitrary string ids so jobs stay attached', () => {
 
   const acRows = aircraftRowsFromBackup(backup);
   assert.equal(acRows.length, 2);
+  assert.equal(acRows[0].serial, '145-628', 'serial carried through a restore');
+  assert.equal(acRows[1].serial, null, 'missing serial becomes null');
   assert.equal(acRows[0].amount, 42000, 'numeric string became a number');
   assert.equal(acRows[1].amount, null, 'empty string became null');
   assert.equal(acRows[1].reg, null, 'empty string became null');
@@ -85,7 +87,7 @@ test('restore maps arbitrary string ids so jobs stay attached', () => {
 test('CSV carries a BOM, one row per job, and a row for jobless aircraft', () => {
   const csv = csvString({
     aircraft: [
-      { id: 'a1', airline: 'Africa World Airlines', type: 'Embraer ERJ-145', reg: '9G-AAB', amount: 42000, currency: 'GHS' },
+      { id: 'a1', airline: 'Africa World Airlines', type: 'Embraer ERJ-145', reg: '9G-AAB', serial: '145-628', amount: 42000, currency: 'GHS' },
       { id: 'a2', airline: 'Passion Air', type: 'Dash 8-Q400', reg: '9G-PSN', amount: 15000, currency: 'USD' },
     ],
     jobs: [
@@ -97,6 +99,8 @@ test('CSV carries a BOM, one row per job, and a row for jobless aircraft', () =>
   const lines = csv.replace(/^﻿/, '').split('\r\n');
   assert.equal(lines.length, 4, 'header + 2 jobs + 1 jobless aircraft');
   assert.ok(lines[0].startsWith('"Airline"'));
+  assert.ok(lines[0].includes('Serial number (MSN)'), 'CSV has a serial column');
+  assert.ok(lines[1].includes('145-628'), 'serial exported on the job row');
   assert.ok(lines[1].includes('Africa World Airlines') && lines[1].includes('A-Check'));
   assert.ok(lines[2].includes('""clean""'), 'quotes escaped');
   assert.ok(lines[3].includes('Passion Air'), 'aircraft with no jobs still gets a row');

@@ -37,6 +37,7 @@
               <div><label>Airline / Operator *</label><input id="airline" required placeholder="e.g. Africa World Airlines" /></div>
               <div><label>Aircraft type *</label><input id="type" required placeholder="e.g. Embraer ERJ-145" /></div>
               <div><label>Registration</label><input id="reg" placeholder="e.g. 9G-AAB" /></div>
+              <div><label>Serial number (MSN)</label><input id="serial" placeholder="e.g. 145-628" /></div>
               <div><label>Contract signed on <button type="button" class="link now" data-now="contractDate">today</button></label><input type="date" id="contractDate" /></div>
               <div><label>Arrived in hangar <button type="button" class="link now" data-now="inAt">now</button></label><input type="datetime-local" id="inAt" /></div>
               <div><label>Left hangar <button type="button" class="link now" data-now="outAt">now</button></label><input type="datetime-local" id="outAt" /></div>
@@ -55,7 +56,7 @@
               <input type="search" id="acSearch" placeholder="Search airline, type, reg…" /></div>
             <div class="tablewrap">
               <table id="acTable"><thead><tr>
-                <th>Airline</th><th>Type</th><th>Reg</th><th>Contract</th><th>In</th><th>Out</th>
+                <th>Airline</th><th>Type</th><th>Reg</th><th>MSN</th><th>Contract</th><th>In</th><th>Out</th>
                 <th>Duration</th><th class="num">Amount</th><th>Status</th><th class="num">Jobs</th><th></th>
               </tr></thead><tbody></tbody></table>
             </div>

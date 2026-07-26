@@ -66,6 +66,7 @@ export function initApp(sb, user) {
       airline: $('airline').value.trim(),
       type: $('type').value.trim(),
       reg: $('reg').value.trim() || null,
+      serial: $('serial').value.trim() || null,
       contract_date: $('contractDate').value || null,
       in_at: toISO($('inAt').value),
       out_at: toISO($('outAt').value),
@@ -96,7 +97,8 @@ export function initApp(sb, user) {
   function editAircraft(id) {
     const a = db.aircraft.find((x) => x.id === id); if (!a) return;
     $('acId').value = a.id; $('airline').value = a.airline; $('type').value = a.type;
-    $('reg').value = a.reg || ''; $('contractDate').value = a.contractDate || '';
+    $('reg').value = a.reg || ''; $('serial').value = a.serial || '';
+    $('contractDate').value = a.contractDate || '';
     $('inAt').value = toInput(a.inAt); $('outAt').value = toInput(a.outAt);
     $('amount').value = a.amount == null ? '' : a.amount;
     $('currency').value = a.currency || 'GHS'; $('acNotes').value = a.notes || '';
@@ -125,7 +127,8 @@ export function initApp(sb, user) {
       const jobs = db.jobs.filter((j) => j.aircraftId === a.id).length;
       return '<tr>' +
         "<td><strong>" + esc(a.airline) + '</strong></td><td>' + esc(a.type) + '</td>' +
-        '<td>' + esc(a.reg || '—') + '</td><td>' + fmtDate(a.contractDate) + '</td>' +
+        '<td>' + esc(a.reg || '—') + '</td><td>' + esc(a.serial || '—') + '</td>' +
+        '<td>' + fmtDate(a.contractDate) + '</td>' +
         '<td>' + fmtDateTime(a.inAt) + '</td><td>' + fmtDateTime(a.outAt) + '</td>' +
         '<td>' + duration(a.inAt, a.outAt) + '</td>' +
         "<td class='num'>" + fmtMoney(a.amount, a.currency) + '</td>' +
@@ -164,7 +167,9 @@ export function initApp(sb, user) {
     const item = (k, v) => "<div class='item'><span class='k'>" + k + "</span><span class='v'>" + v + '</span></div>';
     return "<div class='summary" + (mini ? ' mini' : '') + "'>" +
       item('Airline', '<strong>' + esc(a.airline) + '</strong>') + item('Type', esc(a.type)) +
-      (a.reg ? item('Reg', esc(a.reg)) : '') + item('Contract', fmtDate(a.contractDate)) +
+      (a.reg ? item('Reg', esc(a.reg)) : '') +
+      (a.serial ? item('Serial (MSN)', esc(a.serial)) : '') +
+      item('Contract', fmtDate(a.contractDate)) +
       item('In', fmtDateTime(a.inAt)) + item('Out', fmtDateTime(a.outAt)) +
       item('Duration', duration(a.inAt, a.outAt)) + item('Amount', fmtMoney(a.amount, a.currency)) +
       item('Status', "<span class='pill " + st.cls + "'>" + st.label + '</span>') + '</div>';

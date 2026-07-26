@@ -81,6 +81,7 @@ const sb = makeStub(user);
 
   /* --- criterion 4: departure before arrival refused, visibly --- */
   set('airline', 'Africa World Airlines'); set('type', 'Embraer ERJ-145'); set('reg', '9G-AAB');
+  set('serial', '145-628');
   set('inAt', '2026-07-20T10:00'); set('outAt', '2026-07-20T09:00');
   $('acForm').dispatchEvent(new Event('submit', { cancelable: true }));
   await wait(60);
@@ -148,6 +149,9 @@ const sb = makeStub(user);
   ok('C6 selecting an aircraft shows its details',
     /Africa World Airlines/.test(sumText) && /Embraer ERJ-145/.test(sumText) && /9G-AAB/.test(sumText)
       && /4d 8h/.test(sumText) && /Released/.test(sumText) && /48,500|48\s?500/.test(sumText), sumText);
+  ok('summary strip carries airline, type, reg and serial (MSN)',
+    /Africa World Airlines/.test(sumText) && /Embraer ERJ-145/.test(sumText)
+      && /9G-AAB/.test(sumText) && /145-628/.test(sumText), sumText);
 
   set('jobDate', '2026-07-21'); set('jobType', 'C-Check'); set('jobBy', 'K. Mensah');
   set('jobHours', '12.5'); set('jobStatus', 'Completed');
@@ -159,6 +163,10 @@ const sb = makeStub(user);
   ok('C6 saved job card repeats the aircraft summary',
     /Africa World Airlines/.test(card.textContent) && /9G-AAB/.test(card.textContent)
       && !!card.querySelector('.summary.mini'), card.textContent.slice(0, 80));
+  ok('job card carries airline, type, reg and serial (MSN)',
+    /Africa World Airlines/.test(card.textContent) && /Embraer ERJ-145/.test(card.textContent)
+      && /9G-AAB/.test(card.textContent) && /145-628/.test(card.textContent),
+    card.textContent.slice(0, 140));
   ok('job card shows type, status pill, engineer, hours',
     /C-Check/.test(card.textContent) && /Completed/.test(card.textContent)
       && /K\. Mensah/.test(card.textContent) && /12\.5 man-hours/.test(card.textContent));
@@ -183,7 +191,9 @@ const sb = makeStub(user);
   /* --- jobs count on tab 1 --- */
   document.querySelectorAll('.tabs button')[0].click();
   await wait(30);
-  const jobsCells = [...$('acTable').querySelectorAll('tbody tr')].map((tr) => tr.children[9].textContent.trim());
+  const heads = [...$('acTable').querySelectorAll('thead th')].map((th) => th.textContent.trim());
+  const jobsCol = heads.indexOf('Jobs');
+  const jobsCells = [...$('acTable').querySelectorAll('tbody tr')].map((tr) => tr.children[jobsCol].textContent.trim());
   ok('tab 1 shows linked job count', jobsCells.includes('1'), jobsCells.join(','));
 
   /* --- criterion 5: cascade delete --- */
