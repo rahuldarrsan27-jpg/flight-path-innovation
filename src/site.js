@@ -1,9 +1,9 @@
 // Shared site chrome (nav + footer + AOG) and behaviours for inner pages.
-const BRAND = `<img class="brand-mark" src="/assets/logo-mark-light.png" alt="" width="28" height="28" /><img class="brand-word" src="/assets/logo-wordmark-light.png" alt="FPI Aviation" width="126" height="16" />`;
+const BRAND = `<img class="brand-mark" src="/assets/logo-mark-light.png" alt="" width="28" height="28" /><span class="brand-txt">FPI <b>SERVICES</b></span>`;
 
 const navHTML = (active) => `
   <div class="nav-inner container">
-    <a class="brand" href="/" aria-label="FPI Aviation home">${BRAND}</a>
+    <a class="brand" href="/" aria-label="FPI Services home">${BRAND}</a>
     <nav class="nav-links" aria-label="Primary">
       <a href="/#capabilities"${active === 'capabilities' ? ' class="active"' : ''}>Capabilities</a>
       <a href="/network.html"${active === 'network' ? ' class="active"' : ''}>Network</a>
@@ -35,11 +35,11 @@ const footerHTML = `
       <a href="/network.html">Network &amp; Coverage</a><a href="/#about">About</a><a href="/sustainability.html">Sustainability</a><a href="/careers.html">Careers</a>
     </div>
     <div class="f-col"><h4>Contact</h4>
-      <a href="/aog.html">24/7 AOG Support</a><a href="/capability-check.html">Capability Check</a><a href="mailto:sales@fpiaviation.com">Commercial</a><a href="/#contact">Request a Quote</a>
+      <a href="/aog.html">24/7 AOG Support</a><a href="/capability-check.html">Capability Check</a><a href="mailto:sales@fpiservices.net">Commercial</a><a href="/#contact">Request a Quote</a>
     </div>
   </div>
   <div class="container footer-base">
-    <span>© 2026 FPI Aviation. All rights reserved.</span>
+    <span>© 2026 FPI Services. All rights reserved.</span>
     <span class="footer-legal"><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/credits.html">Credits</a> · Accra International Airport · Ghana · Reg. No. ——</span>
   </div>`;
 

@@ -6,4 +6,4 @@ Disallow: /logs
 Disallow: /logs.html
 Disallow: /api/
 
-Sitemap: https://fpiaviation.com/sitemap.xml
+Sitemap: https://fpiservices.net/sitemap.xml

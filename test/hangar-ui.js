@@ -69,13 +69,13 @@ const set = (id, v) => { const el = $(id); el.value = v; el.dispatchEvent(new Ev
 const confirms = [];
 window.confirm = (msg) => { confirms.push(msg); return true; };
 
-const user = { id: 'user-A', email: 'owner@fpiaviation.com' };
+const user = { id: 'user-A', email: 'owner@fpiservices.net' };
 const sb = makeStub(user);
 
 (async function run() {
   await initApp(sb, user);
   ok('app shell revealed after auth', !$('app').classList.contains('hide'));
-  ok('signed-in email shown', $('whoami').textContent === 'owner@fpiaviation.com', $('whoami').textContent);
+  ok('signed-in email shown', $('whoami').textContent === 'owner@fpiservices.net', $('whoami').textContent);
   ok('clock shows resolved IANA zone', /\//.test($('clock').textContent), $('clock').textContent);
   ok('job date defaults to today', !!$('jobDate').value, $('jobDate').value);
 

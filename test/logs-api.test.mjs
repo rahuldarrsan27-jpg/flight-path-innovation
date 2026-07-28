@@ -21,7 +21,7 @@ writeFileSync(join(dir, 'logs.mjs'), src);
 const { default: handler } = await import(join(dir, 'logs.mjs'));
 const stub = await import(join(dir, 'blobs-stub.mjs'));
 
-const URLBASE = 'https://fpiaviation.com/api/logs/';
+const URLBASE = 'https://fpiservices.net/api/logs/';
 function req(method, path, { body, cookie } = {}) {
   const headers = {};
   const sendBody = body && method !== 'GET' && method !== 'HEAD';
@@ -39,7 +39,7 @@ async function call(method, path, opts) {
 }
 const cookieFrom = (setCookie) => setCookie.split(';')[0];
 
-const EMAIL = 'owner@fpiaviation.com';
+const EMAIL = 'owner@fpiservices.net';
 const PW = 'a-strong-hangar-pass';
 
 test('signed out: no owner yet, and data routes expose nothing', async () => {
@@ -178,18 +178,18 @@ test('client-supplied id/user fields are ignored on write', async () => {
 
 test('routing works via the raw function path too (redirect fallback)', async () => {
   stub.__reset();
-  const s = await handler(new Request('https://fpiaviation.com/.netlify/functions/logs/setup', {
+  const s = await handler(new Request('https://fpiservices.net/.netlify/functions/logs/setup', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ email: EMAIL, password: PW }),
   }));
   assert.equal(s.status, 200, 'setup reachable at the raw function path');
 
-  const anon = await handler(new Request('https://fpiaviation.com/.netlify/functions/logs/data'));
+  const anon = await handler(new Request('https://fpiservices.net/.netlify/functions/logs/data'));
   assert.equal(anon.status, 401, 'still gated at the raw function path');
 
   const cookie = cookieFrom(s.headers.get('set-cookie'));
-  const authed = await handler(new Request('https://fpiaviation.com/.netlify/functions/logs/data', { headers: { cookie } }));
+  const authed = await handler(new Request('https://fpiservices.net/.netlify/functions/logs/data', { headers: { cookie } }));
   assert.equal(authed.status, 200);
 });
 

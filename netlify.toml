@@ -52,7 +52,7 @@
 # Canonical host: 301 www -> apex so Google indexes one clean domain (no
 # duplicate content). Netlify's "primary domain" setting should also be the apex.
 [[redirects]]
-  from = "https://www.fpiaviation.com/*"
-  to = "https://fpiaviation.com/:splat"
+  from = "https://www.fpiservices.net/*"
+  to = "https://fpiservices.net/:splat"
   status = 301
   force = true

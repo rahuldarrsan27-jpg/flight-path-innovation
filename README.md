@@ -1,6 +1,6 @@
-# FPI Aviation
+# FPI Services
 
-Marketing website for **FPI Aviation** — a GCAA Part-145 approved aircraft
+Marketing website for **FPI Services** — a GCAA Part-145 approved aircraft
 maintenance, repair and overhaul (MRO) provider operating from Accra International
 Airport, Ghana. Hangar storage, line & base maintenance and component MRO for ATR,
 Embraer, Boeing and Airbus narrowbody and regional fleets.
