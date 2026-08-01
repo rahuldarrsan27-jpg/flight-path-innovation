@@ -14,7 +14,6 @@ const MODELS = {
   atr72:   { label: 'ATR 72-600',    glb: '/models/atr72.glb',   uid: '1e1a7186f7444d288675262fcee44744' },
   ejet:    { label: 'Embraer E-Jet', glb: '/models/ejet.glb',    uid: '6a674201fceb4395bee35dce685e1ff6' },
   b737max: { label: 'Boeing 737 MAX', glb: '/models/b737max.glb', uid: '2747cad8b4c64122abe992c9ad1e8bd1' },
-  a320neo: { label: 'Airbus A320neo', glb: '/models/a320neo.glb', uid: 'b14863d4091e41e6abe25832a0af3b00' },
 };
 // ui_infos=0 hides Sketchfab's title/author bar (no author name shown in the viewer);
 // CC-BY attribution is provided on /credits.html. ui_watermark=0 applies on Pro accounts.
