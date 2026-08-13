@@ -26,6 +26,24 @@
 # Host-scoped and listed first, so every path on that subdomain shows the notice
 # and nothing on the main site is affected. Remove this block (and the domain
 # alias in Netlify) when the subdomain is repointed to the app's own host.
+#
+# These asset rules must stay ABOVE the catch-all: rules are matched in order, and
+# without them the catch-all returns the HTML page for the logo and icons too.
+[[redirects]]
+  from = "https://adpt.fpiservices.net/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
+[[redirects]]
+  from = "https://adpt.fpiservices.net/favicon-32.png"
+  to = "/favicon-32.png"
+  status = 200
+
+[[redirects]]
+  from = "https://adpt.fpiservices.net/apple-touch-icon.png"
+  to = "/apple-touch-icon.png"
+  status = 200
+
 [[redirects]]
   from = "https://adpt.fpiservices.net/*"
   to = "/adpt.html"
