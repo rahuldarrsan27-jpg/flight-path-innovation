@@ -22,6 +22,16 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
+# adpt.fpiservices.net — holding page while that application is built elsewhere.
+# Host-scoped and listed first, so every path on that subdomain shows the notice
+# and nothing on the main site is affected. Remove this block (and the domain
+# alias in Netlify) when the subdomain is repointed to the app's own host.
+[[redirects]]
+  from = "https://adpt.fpiservices.net/*"
+  to = "/adpt.html"
+  status = 200
+  force = true
+
 # Clean URL for the internal module: /logs (no .html).
 [[redirects]]
   from = "/logs"
@@ -34,6 +44,12 @@
   from = "/api/logs/*"
   to = "/.netlify/functions/logs/:splat"
   status = 200
+
+# The holding page is temporary — keep it out of search results.
+[[headers]]
+  for = "/adpt*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
 
 # Belt-and-braces: never let the protected module or its API be indexed or framed.
 [[headers]]

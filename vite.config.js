@@ -23,6 +23,8 @@ export default defineConfig({
         credits: resolve(root, 'credits.html'),
         // Protected internal module (noindex, not linked from the marketing pages).
         logs: resolve(root, 'logs.html'),
+        // Holding page served at adpt.fpiservices.net until that app is handed over.
+        adpt: resolve(root, 'adpt.html'),
       },
     },
   },

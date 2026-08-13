@@ -6,4 +6,7 @@ Disallow: /logs
 Disallow: /logs.html
 Disallow: /api/
 
+# Temporary holding page for the adpt subdomain.
+Disallow: /adpt.html
+
 Sitemap: https://fpiservices.net/sitemap.xml
