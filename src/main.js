@@ -105,7 +105,7 @@ if (heroBg && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
 document.querySelectorAll('[data-prefill="capability"]').forEach((b) =>
   b.addEventListener('click', () => {
     const msg = document.querySelector('#rfq [name=message]');
-    if (msg) msg.value = 'Please send your full GCAA Part-145 capability list (PDF).';
+    if (msg) msg.value = 'Please send your full capability list (PDF).';
   }));
 
 /* ---------- Prefill RFQ service from ?service= (service-page CTAs) ---------- */

@@ -1,7 +1,7 @@
 {
   "name": "FPI Services",
   "short_name": "FPI Services",
-  "description": "GCAA Part-145 approved aircraft MRO and storage at Accra International Airport, Ghana.",
+  "description": "Aircraft maintenance and storage at Accra International Airport, Ghana.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#060b14",

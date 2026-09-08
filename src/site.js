@@ -8,7 +8,6 @@ const navHTML = (active) => `
       <a href="/#capabilities"${active === 'capabilities' ? ' class="active"' : ''}>Capabilities</a>
       <a href="/network.html"${active === 'network' ? ' class="active"' : ''}>Network</a>
       <a href="/#fleet">Fleet</a>
-      <a href="/#approvals">Approvals</a>
       <a href="/#about">About</a>
     </nav>
     <div class="nav-actions">
@@ -22,14 +21,12 @@ const footerHTML = `
   <div class="container footer-grid">
     <div class="f-brand">
       <div class="brand">${BRAND}</div>
-      <p>GCAA Part-145 approved aircraft storage, line &amp; base maintenance and component MRO at Accra International Airport.</p>
-      <span class="f-badge">GCAA PART-145 · APPROVED</span>
+      <p>Aircraft storage, line maintenance and base maintenance to C-check level at Accra International Airport.</p>
     </div>
     <div class="f-col"><h4>Capabilities</h4>
       <a href="/services/hangar-storage.html">Hangar Storage</a>
       <a href="/services/line-maintenance.html">Line Maintenance</a>
       <a href="/services/base-maintenance.html">Base Maintenance</a>
-      <a href="/services/component-mro.html">Component MRO</a>
     </div>
     <div class="f-col"><h4>Company</h4>
       <a href="/network.html">Network &amp; Coverage</a><a href="/#about">About</a><a href="/sustainability.html">Sustainability</a><a href="/careers.html">Careers</a>

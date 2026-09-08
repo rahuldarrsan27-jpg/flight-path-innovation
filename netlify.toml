@@ -50,6 +50,14 @@
   status = 200
   force = true
 
+# The component MRO service was removed (outside our maintenance scope). Redirect
+# the old URL so any existing link or crawl lands on the current capabilities.
+[[redirects]]
+  from = "/services/component-mro.html"
+  to = "/#capabilities"
+  status = 301
+  force = true
+
 # Clean URL for the internal module: /logs (no .html).
 [[redirects]]
   from = "/logs"

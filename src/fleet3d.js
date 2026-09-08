@@ -19,7 +19,7 @@ const MODELS = {
 // CC-BY attribution is provided on /credits.html. ui_watermark=0 applies on Pro accounts.
 const SF = 'autostart=1&autospin=0.3&ui_theme=dark&dnt=1&transparent=1&ui_infos=0&ui_watermark=0&ui_stop=0&ui_hint=2&ui_color=f0bd6c';
 const HOT = {
-  nose:   { t: 'Nose · Avionics & Radar', s: 'Component MRO',   href: '/services/component-mro.html' },
+  nose:   { t: 'Nose · Avionics & Radar', s: 'Line Maintenance',  href: '/services/line-maintenance.html' },
   wing:   { t: 'Wing · Hydraulics & Fuel', s: 'Base Maintenance', href: '/services/base-maintenance.html' },
   engine: { t: 'Engine · Powerplant',      s: 'Line Maintenance', href: '/services/line-maintenance.html' },
 };

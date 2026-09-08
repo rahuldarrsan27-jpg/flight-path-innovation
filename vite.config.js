@@ -12,7 +12,6 @@ export default defineConfig({
         storage: resolve(root, 'services/hangar-storage.html'),
         line: resolve(root, 'services/line-maintenance.html'),
         base: resolve(root, 'services/base-maintenance.html'),
-        component: resolve(root, 'services/component-mro.html'),
         network: resolve(root, 'network.html'),
         sustainability: resolve(root, 'sustainability.html'),
         careers: resolve(root, 'careers.html'),

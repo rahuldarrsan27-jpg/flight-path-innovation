@@ -11,9 +11,8 @@ initEffects();
 const TAT = {
   'Hangar Storage': 'From same-day induction',
   'Line Maintenance': '4–24 hours',
-  'Component MRO': '5–15 working days',
 };
-const BASE_TAT = { 'A-Check': '1–3 days', 'C-Check': '10–21 days', 'D-Check': '4–8 weeks' };
+const BASE_TAT = { 'A-Check': '1–3 days', 'C-Check': '10–21 days' };
 
 const form = document.getElementById('checker-form');
 const levelWrap = document.getElementById('check-level-wrap');
@@ -33,10 +32,10 @@ form.addEventListener('submit', (e) => {
   if (!type || !service) return;
   const isBase = service === 'Base Maintenance';
   const tat = isBase ? BASE_TAT[level] : TAT[service];
-  crLine.innerHTML = `Yes — we are GCAA Part-145 rated for <b>${service}${isBase ? ' · ' + level : ''}</b> on the <b>${type}</b>.`;
+  crLine.innerHTML = `Yes — <b>${service}${isBase ? ' · ' + level : ''}</b> on the <b>${type}</b> is within our capability.`;
   crTat.textContent = tat;
   // deep-link to the RFQ with the requirement prefilled
-  const svcParam = isBase ? 'Base Maintenance (C/D)' : service;
+  const svcParam = isBase ? 'Base Maintenance (C)' : service;
   crCta.href = `/?service=${encodeURIComponent(svcParam)}&type=${encodeURIComponent(type)}#contact`;
   result.hidden = false;
   result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

@@ -46,9 +46,17 @@ All committed + pushed to https://github.com/rahuldarrsan27-jpg/flight-path-inno
 7. Remaining visual polish available: custom cursor, 404 page, day→night toggle.
 
 ## Placeholders to replace before launch
-Emails (`@fpiservices.net` — set up mailboxes once the domain is live), GCAA cert
-no. `GH-AMO-2024`, company Reg. No., facility stats/TAT figures (illustrative),
-analytics ID (hook in `effects.js` `loadAnalytics()`).
+Emails (`@fpiservices.net` — set up mailboxes once the domain is live), company
+Reg. No., facility stats/TAT figures (illustrative), analytics ID (hook in
+`effects.js` `loadAnalytics()`).
+
+**Scope discipline (important).** The GCAA approval is PENDING, so the site makes
+no certification, approval or Part-145 claim anywhere — do not reintroduce one
+until the certificate is actually issued. Advertised scope is deliberately
+limited to: hangar storage, line maintenance, and base maintenance to **C-check
+level**. No D checks, no NDT, no component/workshop MRO. The `#approvals`
+section, the certificate card and the component MRO service page were removed
+for this reason.
 Phone + WhatsApp are set to **+233 55 435 2912**.
 
 ## Deploy / push
